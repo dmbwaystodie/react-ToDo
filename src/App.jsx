@@ -1,11 +1,19 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import "./App.scss";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    const saved = localStorage.getItem("tasks");
+    return saved ? JSON.parse(saved) : [];
+  });
 
   const [filter, setFilter] = useState("all");
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   // удаление задачи
   function remove(id) {
@@ -66,19 +74,19 @@ function App() {
         </div>
         <div className="filters">
           <button
-            className={filter === "all" ? "done" : ""}
+            className={filter === "all" ? "active" : ""}
             onClick={() => setFilter("all")}
           >
             all
           </button>
           <button
-            className={filter === "completed" ? "done" : ""}
+            className={filter === "completed" ? "active" : ""}
             onClick={() => setFilter("completed")}
           >
             completed
           </button>
           <button
-            className={filter === "active" ? "done" : ""}
+            className={filter === "active" ? "active" : ""}
             onClick={() => setFilter("active")}
           >
             uncompleted
