@@ -1,18 +1,33 @@
 # Todo App (React)
 
-Simple todo list application built with React.
+![React](https://img.shields.io/badge/React-18-blue)
+![Vite](https://img.shields.io/badge/Vite-fast-purple)
+
+Simple todo list built with React.
+
+## Preview
+
+<p align="center">
+  <img src="./assets/image.png" width="300" />
+</p>
 
 ## Features
 
-- Add new tasks
-- Remove tasks
+- Add and remove tasks
 - Mark tasks as completed
-- Simple and clean UI
+- Filter (all / completed / active)
+- localStorage persistence
+- Task counters
 
 ## Tech Stack
 
-- React (useState)
+- React (useState, useEffect)
 - SCSS
 - Vite
+- Bootstrap Icons
 
-![Todo App](./assets/image.png)
+## Run
+
+```bash
+npm install
+npm run dev
